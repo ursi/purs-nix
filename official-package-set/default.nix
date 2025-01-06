@@ -6134,53 +6134,6 @@ with ps-pkgs;
         };
     };
 
-  logging =
-    {
-      src.git =
-        {
-          repo = "https://github.com/rightfold/purescript-logging.git";
-          rev = "148c371aa97e30663532d548faaca3555fbd3fca";
-        };
-
-      info =
-        {
-          version = "3.0.0";
-
-          dependencies =
-            [
-              "console"
-              "contravariant"
-              "effect"
-              "either"
-              "prelude"
-              "transformers"
-              "tuples"
-            ];
-        };
-    };
-
-  logging-journald =
-    {
-      src.git =
-        {
-          repo = "https://github.com/paluh/purescript-logging-journald.git";
-          rev = "5461db66d423206f57d19d94cc6e44f44fa130bc";
-        };
-
-      info =
-        {
-          version = "0.4.0";
-
-          dependencies =
-            [
-              "effect"
-              "logging"
-              "prelude"
-              "systemd-journald"
-            ];
-        };
-    };
-
   lumi-components =
     {
       src.git =

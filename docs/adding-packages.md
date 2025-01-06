@@ -1,3 +1,59 @@
+```nix
+{ name = "The name of the package. When defining a package in an overlay, this value will be filled in automatically from the name of the attribute in the overlay";
+
+  src = ''
+    The source of the package. This can be specified in the following ways:
+    - Git: { git =
+               { repo = "The URL of the Git repo";
+
+                 rev = "The commit hash";
+
+                 # optional
+                 ref = "A ref needed to find the `rev`";
+               };
+           }
+
+    - Flakes: { flake =
+                  { url = "A flake URL";
+                    package = ''
+                      default: "default"
+                      The name of the package in the flake that that is the PureScript package
+                    '';
+              }
+
+    - Path: { path = "A nix path value to the location of the package"; }
+  '';
+
+  info = { # optional
+           version = "the package's version (no 'v' prefix)";
+
+           dependencies = ''
+             default = []
+             list of package's dependencies
+           '';
+
+           src = ''
+            default = "src"
+            The 'src' directory from the source of the package
+           '';
+
+           install = ''
+             default = "ln -s $src/${lib.escapeShellArg src} $out"
+             How to install the package from the source
+           '';
+
+           # optional
+           pursuit = { name = ''
+                         default = config.name
+                         The name of the package on Pursuit
+                       '';
+
+                       repo = "The Git repo that shows up on pursuit";
+                       license = "A lib.licenses value, or something in the shape of one;
+                     }
+         };
+}
+```
 # Adding Packages
 
 ## Package Set: Git
