@@ -19,10 +19,10 @@
 
     - Flakes: { flake =
                   { url = "A flake URL";
-                    package = ''
+                    package = '''
                       default: "default"
                       The name of the package in the flake that that is the PureScript package
-                    '';
+                    ''';
               }
 
     - Path: { path = "A nix path value to the location of the package"; }
