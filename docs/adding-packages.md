@@ -39,7 +39,8 @@
            # optional
            foreign = ''
              The foreign dependencies of a package can be specified in the following ways:
-             { ${module-name1} = '''
+             { # the name of the module that will have access to the foreign code
+               ${module-name1} = '''
                - Generic Source: { src = "path to a directory containing foreign files"; }
                - Node Modules: { node_modules = "path to a node_modules directory"; }
                '''
