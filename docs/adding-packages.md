@@ -29,11 +29,11 @@
   '';
 
   info = { # optional
-           version = "the package's version (no 'v' prefix)";
+           version = "The package's version (no 'v' prefix)";
 
            dependencies = ''
              default = []
-             list of package's dependencies
+             List of package's dependencies
            '';
 
            src = ''
@@ -53,17 +53,18 @@
                        '';
 
                        repo = "The Git repo that shows up on pursuit";
-                       license = "A lib.licenses value, or something in the shape of one;
+                       license = "A lib.licenses value, or something in the shape of one";
                      }
          };
 }
 ```
+
 # Adding Packages
 
 ## Package Set: Git
 
 Packages are added by adding a package description attributes set to either [ps-pkgs.nix](/ps-pkgs.nix) or `namespaces/<namespace>.nix`, or by adding your package to the [official package set](https://github.com/purescript/package-sets) and [updating the generated](/official-package-set) nix.\
-The packages descriptions sets consist of two parts:
+The packages descriptions sets are described below. The source of truth is [package-descriptions.nix](/package-descriptions.nix).
 ```
 { src.git
 , info
