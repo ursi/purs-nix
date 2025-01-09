@@ -2,7 +2,7 @@
 { name = ''
     The name of the package. When defining a package in an overlay,
     this value will be filled in automatically from the name of the
-    attribute in the overlay
+    attribute in the overlay.
   '';
 
   src = ''
@@ -34,6 +34,17 @@
            dependencies = ''
              default = []
              List of package's dependencies
+           '';
+
+           # optional
+           foreign = ''
+             The foreign dependencies of a package can be specified in the following ways:
+             { ${module-name1} = '''
+               - Generic Source: { src = "path to a directory containing foreign files"; }
+               - Node Modules: { node_modules = "path to a node_modules directory"; }
+               '''
+               ${module-name2} = ...
+             }
            '';
 
            src = ''
@@ -154,12 +165,13 @@ The arguments that are currently passed are:\
 `build` `build-set` `ps-pkgs` `ps-pkgs-ns` [`licenses`](https://github.com/NixOS/nixpkgs/blob/master/lib/licenses.nix)
 
 ## <code id="user-content-build">build</code>
-purs-nix exports a `build` function that can be used to add packages to your project from arbitrary sources. It takes an argument in mostly the same form as described above, but with a few differences.
-- `name`: You must specify a name attribute for the package.
-- `src.path`: This is another type of source you can specify for `build` (and technically the package set as well). `src.path` takes a path or derivation that points to the source of the package.
+purs-nix exports a `build` function that can be used to add packages to your project from arbitrary sources. It takes an argument in the form above.
 
 ## <code id="user-content-build-set">build-set</code>
-purs-nix exports a `build-set` function that can be used to add packages to your project from arbitrary sources. It is used to build the standard `ps-pkgs` package set and therefore takes an attrset in the same form shown above.
+purs-nix exports a `build-set` function that can be used to add packages to your project from arbitrary sources. It works like build except you can specify a whole attribute set.
+I think this will likely be deprecated soon, as it's not currently being used anywhere and
+there are overlays now, but I'm going to wait until multiple backends are supported to be
+sure.
 
 ## Package Set: Flake
 
